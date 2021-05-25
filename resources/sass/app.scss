@@ -1,0 +1,513 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Font Awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+// Flag Icon CSS
+@import "~flag-icon-css/sass/flag-icon";
+
+.sidebar a {
+    outline: none;
+    text-decoration: none;
+    // color: black;
+    font-weight: 600;
+}
+
+.active a {
+    color: rgb(45, 87, 134);
+    text-decoration: none;
+}
+
+body {
+    font-size: 0.875rem;
+}
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+    // padding-top: 0.75rem;
+    // padding-bottom: 0.75rem;
+    // font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+    img {
+        width: 125px;
+        height: 40px;
+    }
+    @media (max-width: 767.98px) {
+        img {
+            width: 120px;
+            height: 45px;
+        }
+    }
+}
+
+.navbar .navbar-toggler {
+    top: 0.25rem;
+    right: 1rem;
+}
+
+.navbar .idioma {
+    position: absolute;
+    text-decoration: none;
+    right: 80px;
+    top: 0.7rem;
+}
+
+.navbar .form-control {
+    padding: 0.75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+
+.form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    padding: 40px 0 0; /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        margin-top: 1.5rem;
+    }
+    footer {
+        margin-bottom: 24px;
+    }
+}
+
+footer {
+    bottom: 0px;
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 40px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+    .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+    }
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+}
+
+.sidebar .nav-link:hover {
+    color: #0063cc;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.flag {
+    height: 20px;
+    width: 20px;
+}
+
+/* CSS Whatsapp Chat */
+#whatsapp-chat {
+    position: fixed;
+    background: #fff;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 1px 15px rgba(32, 33, 36, 0.28);
+    bottom: 90px;
+    right: 30px;
+    overflow: hidden;
+    z-index: 99;
+    animation-name: showchat;
+    animation-duration: 1s;
+    transform: scale(1);
+}
+
+a.blantershow-chat {
+    /*   background: #009688; */
+    background: #fff;
+    color: #404040;
+    position: fixed;
+    display: flex;
+    font-weight: 400;
+    justify-content: space-between;
+    z-index: 98;
+    bottom: 25px;
+    right: 30px;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 1px 15px rgba(32, 33, 36, 0.28);
+}
+
+a.blantershow-chat svg {
+    transform: scale(1.2);
+    margin: 0 10px 0 0;
+}
+
+.header-chat {
+    background: #095e54;
+    color: #fff;
+    padding: 20px;
+}
+.header-chat h3 {
+    margin: 0 0 10px;
+}
+.header-chat p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+.info-avatar {
+    position: relative;
+}
+.info-avatar img {
+    border-radius: 100%;
+    width: 50px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+.info-avatar:before {
+    content: "\f232";
+    z-index: 1;
+    font-family: "Font Awesome 5 Brands";
+    background: #23ab23;
+    color: #fff;
+    padding: 4px 5px;
+    border-radius: 100%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.info-chat span {
+    display: block;
+}
+#get-label,
+span.chat-label {
+    font-size: 12px;
+    color: #888;
+}
+#get-nama,
+span.chat-nama {
+    margin: 5px 0 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+}
+#get-label,
+#get-nama {
+    color: #fff;
+}
+span.my-number {
+    display: none;
+}
+.blanter-msg {
+    color: #444;
+    padding: 20px;
+    font-size: 12.5px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+textarea#chat-input {
+    border: none;
+    font-family: "Arial", sans-serif;
+    width: 100%;
+    height: 20px;
+    outline: none;
+    resize: none;
+}
+a#send-it {
+    color: #555;
+    /* width: 40px; */
+    width: auto;
+    margin: -5px 0 0 5px;
+    font-weight: 700;
+    padding: 8px;
+    background: #eee;
+    border-radius: 10px;
+}
+.first-msg {
+    background: #f5f5f5;
+    padding: 30px;
+    text-align: center;
+}
+.first-msg span {
+    background: #e2e2e2;
+    color: #333;
+    font-size: 14.2px;
+    line-height: 1.7;
+    border-radius: 10px;
+    padding: 15px 20px;
+    display: inline-block;
+}
+.start-chat .blanter-msg {
+    display: flex;
+}
+#get-number {
+    display: none;
+}
+a.close-chat {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: #fff;
+    font-size: 30px;
+}
+@keyframes showhide {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}
+@keyframes showchat {
+    from {
+        /* transform: scale(0); */
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 480px) {
+    #whatsapp-chat {
+        width: auto;
+        left: 5%;
+        right: 5%;
+        font-size: 80%;
+    }
+}
+.hide {
+    display: none;
+    animation-name: showhide;
+    animation-duration: 1.5s;
+    transform: scale(1);
+    opacity: 1;
+}
+#whatsapp .show {
+    display: block;
+    animation-name: showhide;
+    animation-duration: 1.5s;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* About Me
+---------------------*/
+.about-text h3 {
+    font-size: 45px;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+@media (max-width: 767px) {
+    .about-text h3 {
+        font-size: 35px;
+    }
+}
+.about-text h6 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+@media (max-width: 767px) {
+    .about-text h6 {
+        font-size: 18px;
+    }
+}
+.about-text p {
+    font-size: 18px;
+    max-width: 450px;
+}
+.about-text p mark {
+    font-weight: 600;
+    color: #20247b;
+}
+
+.about-list {
+    padding-top: 10px;
+}
+.about-list .media {
+    padding: 5px 0;
+}
+.about-list label {
+    color: #20247b;
+    font-weight: 600;
+    width: 88px;
+    margin: 0;
+    position: relative;
+}
+.about-list label:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 11px;
+    width: 1px;
+    height: 12px;
+    background: #20247b;
+    -moz-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+    margin: auto;
+    opacity: 0.5;
+}
+.about-list p {
+    margin: 0;
+    font-size: 15px;
+}
+
+@media (max-width: 991px) {
+    .about-avatar {
+        margin-top: 30px;
+    }
+}
+
+.about-section .counter {
+    padding: 22px 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+}
+.about-section .counter .count-data {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.about-section .counter .count {
+    font-weight: 700;
+    color: #20247b;
+    margin: 0 0 5px;
+}
+.about-section .counter p {
+    font-weight: 600;
+    margin: 0;
+}
+mark {
+    background-image: linear-gradient(
+        rgba(252, 83, 86, 0.6),
+        rgba(252, 83, 86, 0.6)
+    );
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+    background-color: transparent;
+    padding: 0;
+    color: currentColor;
+}
+.theme-color {
+    color: #7853fc;
+}
+.dark-color {
+    color: #20247b;
+}
+
+// Accordeon sobre mi
+
+.accordion .card {
+    background: none;
+    border: none;
+}
+.accordion .card .card-header {
+    background: none;
+    border: none;
+    padding: 0.4rem 1rem;
+    font-family: "Roboto", sans-serif;
+}
+.accordion .card-header h2 span {
+    float: left;
+    margin-top: 10px;
+}
+.accordion .card-header .btn {
+    color: #2f2f31;
+    font-size: 1.04rem;
+    text-align: left;
+    position: relative;
+    font-weight: 500;
+    padding-left: 2rem;
+}
+.accordion .card-header i {
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+.accordion .card-header .btn:hover {
+    color: #0066ff;
+}
+.accordion .card-body {
+    color: #324353;
+    padding: 0.5rem 3rem;
+}
+
+.accordion .highlight .btn {
+    color: #74bd30;
+}
+
+.card-header .fa {
+    transition: 0.3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+    transform: rotate(180deg);
+}
+
+.link-group-item {
+    list-style-type: none;
+}
+
+//home
