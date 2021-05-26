@@ -15,9 +15,9 @@
     </style>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3 border-bottom">
-        <a class="btn d-none d-md-block" href="{{ route('centros.index') }}"><i class="fas fa-arrow-left"></i></a>
+        <a class="btn d-none d-md-block position-absolute py-1 px-2" href="{{ route('centros.index') }}"><i class="fas fa-arrow-left"></i></a>
 
-        <h1 class="h2">
+        <h1 class="h2 ml-md-5">
             {{ $centro->denominacion }}
         </h1>
 

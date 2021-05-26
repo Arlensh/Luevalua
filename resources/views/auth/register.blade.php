@@ -84,15 +84,15 @@
                                 <div class="col-md-8">
                                     <select class="form-control" name="centro" id="centro">
                                         <option value="">@lang('eligetucentro')</option>
-                                        {{-- @foreach ($centros as $centro)
+                                        @foreach ($centros as $centro)
                                             <option class="d-flex justify-content-between align-items-center"
-                                                value="{{ $centro->codigo }}"> --}}
-                                                {{-- {{ ucfirst(strtolower($centro->denominacion_especifica)) }} --}}
-                                                {{-- {{ $centro->denominacion_especifica }} --}}
-                                            {{-- </option>
-                                        @endforeach --}}
+                                                value="{{ $centro->id }}">
+                                                {{-- ucfirst(strtolower($centro->denominacion_especifica)) --}}
+                                                {{ $centro->denominacion_especifica }} @lang('from') {{ $centro->direccion}}
+                                            </option>
+                                        @endforeach
                                     </select>
-                                    {{-- {{ $centros->links('pagination::bootstrap-4') }} --}}
+                                    {{ $centros->links('pagination::bootstrap-4') }}
 
                                     @error('centro')
                                         <span class="invalid-feedback" role="alert">

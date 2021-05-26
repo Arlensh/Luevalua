@@ -42,13 +42,23 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    protected function showelCentro()
+    public function showRegistrationForm()
     {
+        // $centros = Centro::table('codigo')->get();
 
-        $centros = Centro::table('codigo')->get();
+        return view('auth.register', [
+                'centros' => Centro::orderBy('denominacion', 'asc')->paginate(4000)
+            ]);
 
-        return view('auth.register', $centros);
     }
+
+    // protected function showelCentro()
+    // {
+
+    //     $centros = Centro::table('codigo')->get();
+
+    //     return view('auth.register', $centros);
+    // }
 
     /**
      * Get a validator for an incoming registration request.
