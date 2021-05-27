@@ -5,7 +5,7 @@
 @section('content')
     <h1>Centros</h1>
     @auth
-        <a href="{{ route('projects.create') }}">Crear Proyecto</a>
+        <a href="{{ route('comentarios.create') }}">Crear Proyecto</a>
     @endauth
     <ul>
         @forelse($centros as $centro)

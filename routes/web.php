@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::view('/', 'home', ['nombre' => 'Luciano'])->name('home'); //Politicas de privacidad, terminos y condiciones
 
 Route::view('/', 'home')->name('home');
 Route::resource('centros', 'App\Http\Controllers\CentroController')->names('centros');
@@ -28,17 +27,22 @@ Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 Route::post('/contact', 'App\Http\Controllers\MessageController@store')->name('messages.store');
 
-// Auth::routes(['register' => false]);
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-// Cambiar el idioma
+// // Cambiar el idioma
 Route::get('{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-// Route::resource('centros', 'App\Http\Controllers\ProjectController')->names('projects')->parameters(['centros' => 'project']);
-// Route::get('/portfolio', 'App\Http\Controllers\ProjectController@index')->name('projects.index');
-// Route::get('/portfolio/create', 'App\Http\Controllers\ProjectController@create')->name('projects.create');
-// Route::get('/portfolio/{project}/editar', 'App\Http\Controllers\ProjectController@edit')->name('projects.edit');
-// Route::patch('/portfolio/{project}', 'App\Http\Controllers\ProjectController@update')->name('projects.update');
-// Route::post('portfolio', 'App\Http\Controllers\ProjectController@store')->name('projects.store');
-// Route::get('/portfolio/{project}', 'App\Http\Controllers\ProjectController@show')->name('projects.show');
-// Route::delete('/portfolio/{project}', 'App\Http\Controllers\ProjectController@destroy')->name('projects.destroy');
+
+Route::get('/comentarios', 'App\Http\Controllers\ComentarioController@index')->name('comentarios.index');
+Route::get('/comentarios/create', 'App\Http\Controllers\ComentarioController@create')->name('comentarios.create');
+Route::post('/comentarios', 'App\Http\Controllers\ComentarioController@store')->name('comentarios.store');
+
+Route::get('/comentarios/{comentario}', 'App\Http\Controllers\ComentarioController@show')->name('comentarios.show');
+
+
+// // Route::get('/comentario/create', 'App\Http\Controllers\ProjectController@create')->name('projects.create');
+// // Route::get('/comentario/{project}/editar', 'App\Http\Controllers\ProjectController@edit')->name('projects.edit');
+// // Route::patch('/comentario/{project}', 'App\Http\Controllers\ProjectController@update')->name('projects.update');
+// // Route::post('comentario', 'App\Http\Controllers\ProjectController@store')->name('projects.store');
+// // Route::get('/comentario/{project}', 'App\Http\Controllers\ProjectController@show')->name('projects.show');
+// // Route::delete('/comentario/{project}', 'App\Http\Controllers\ProjectController@destroy')->name('projects.destroy');

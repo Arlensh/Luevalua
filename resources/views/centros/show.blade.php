@@ -100,7 +100,8 @@
                 </div>
             </div>
         </div>
-        {{-- @include('partials.comentarios') --}}
+
+        @include('comentarios.index')
 
     </div>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"

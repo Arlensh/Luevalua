@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveProjectRequest;
 use App\Models\Centro;
 use App\Models\Coment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Session;
 
-class CentroController extends Controller
+class ComentarioController extends Controller
 {
 
     public function __construct()
@@ -26,23 +27,25 @@ class CentroController extends Controller
      */
     public function index(Request $query)
     {
+        // $comentarios = [
+        //     ['title' => 'Comentario1'],
+        //     ['title' => 'Comentario2'],
+        //     ['title' => 'Comentario3'],
+        //     ['title' => 'Comentario4'],
+        // ];
 
-        // $centros = Centro::denominacion_especifica($centro->get('denominacion_especifica'))->orderBy('id_auto', 'asc')->paginate(20);
-        // return view('centros.index', compact('centros'));
-        return view('centros.index', [
-            'centros' => Centro::name($query->get('cntr'))->orderBy('denominacion_especifica', 'asc')->paginate(4000)
+        // return view('centros.comentarios', compact('comentarios'));
+
+        return view('comentarios.index', [
+            'comentarios' => Coment::orderBy('created_at', 'asc')->paginate(100)
         ]);
-
-
-        // return view('centros.index', [
-        //     'centros' => Centro::orderBy('id_auto', 'asc')->paginate(20)
-        // ]);
     }
 
-    public function create()
+    public function create(Centro $centro)
     {
-        return view('centros.create', [
-            'centro' => new Centro
+
+        return view('comentarios.create', [
+            'centro' => $centro
         ]);
     }
 
@@ -52,16 +55,16 @@ class CentroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SaveProjectRequest $request)
+    public function store()
     {
-        //metodo mas eficiente:
-        //guardo la variable fields el json que me devuelve el formulario, con la funcion validate hago que solo se validen los atributos que yo escoja.
-        //todo esto para que no se modifiquen atributos que no queremos como el "approved" o la "id"
+    $title = request('title');
 
-        Centro::create($request->validated());
+    Coment::create([
+        'title' => $title,
 
-        return redirect()->route('centros.index')->with('status', 'El proyecto fue creado con éxito');
-    }
+    ]);
+
+}
 
     /**
      * Display the specified resource.
@@ -69,16 +72,9 @@ class CentroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Centro $centro)
+    public function show(Coment $comentario)
     {
-
-        // return Centro::find($centro);
-
-        $comentarios = Coment::all();
-
-        return view('centros.show', [
-            'centro' => $centro
-        ], compact('comentarios'));
+        return $comentario;
     }
 
     /**
@@ -95,11 +91,6 @@ class CentroController extends Controller
     // }
     public function update(Centro $centro)
     {
-        $centro->update([
-            'content' => request('content'),
-        ]);
-
-        return redirect()->route('centros.show', $centro);
     }
 
 
@@ -111,14 +102,9 @@ class CentroController extends Controller
      */
     public function destroy(Centro $centro)
     {
-        // $centro->delete();
-        return redirect()->route('centros.index')->with('status', 'El proyecto fue eliminado con éxito');
     }
 
     public function edit(Centro $centro)
     {
-        return view('centros.edit', [
-            'centro' => $centro
-        ]);
     }
 }
