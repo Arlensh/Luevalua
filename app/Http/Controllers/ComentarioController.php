@@ -41,30 +41,24 @@ class ComentarioController extends Controller
         ]);
     }
 
-    public function create(Centro $centro)
-    {
+    // public function create(Centro $centro){
+    //     return $centro;
+    //         // return view('comen
+    //         return view('comentarios.create', [
+    //             'centro' => $centro
+    //         ]);
+    //     }
 
-        return view('comentarios.create', [
-            'centro' => $centro
-        ]);
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
-    {
-    $title = request('title');
+//     public function store(){
+//         $title = request('title');
 
-    Coment::create([
-        'title' => $title,
+//         Coment::create([
+//             'title' => $title,
 
-    ]);
+//     ]);
 
-}
+// }
 
     /**
      * Display the specified resource.

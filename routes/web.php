@@ -22,6 +22,12 @@ use Illuminate\Support\Facades\Auth;
 Route::view('/', 'home')->name('home');
 Route::resource('centros', 'App\Http\Controllers\CentroController')->names('centros');
 Route::patch('/centro/{centro}', 'App\Http\Controllers\CentroController@update')->name('centro.update');
+Route::get('/centros/{centro}/comment', 'App\Http\Controllers\CentroController@create')->name('centros.create');
+Route::post('/centros', 'App\Http\Controllers\CentroController@store')->name('centro.store');
+
+// Route::get('/centros/comment', 'App\Http\Controllers\ComentarioController@')->name('comentarios.show');
+
+// Route::post('/centros', 'App\Http\Controllers\ComentarioController@store')->name('centro.store');
 
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
@@ -33,11 +39,11 @@ Auth::routes(['verify' => true]);
 Route::get('{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
 
-Route::get('/comentarios', 'App\Http\Controllers\ComentarioController@index')->name('comentarios.index');
-Route::get('/comentarios/create', 'App\Http\Controllers\ComentarioController@create')->name('comentarios.create');
-Route::post('/comentarios', 'App\Http\Controllers\ComentarioController@store')->name('comentarios.store');
+// // Route::get('/comentarios', 'App\Http\Controllers\ComentarioController@index')->name('comentarios.index');
+// // Route::get('/comentarios/create', 'App\Http\Controllers\ComentarioController@create')->name('comentarios.create');
+// // Route::post('/comentarios', 'App\Http\Controllers\ComentarioController@store')->name('comentarios.store');
 
-Route::get('/comentarios/{comentario}', 'App\Http\Controllers\ComentarioController@show')->name('comentarios.show');
+// // Route::get('/comentarios/{comentario}', 'App\Http\Controllers\ComentarioController@show')->name('comentarios.show');
 
 
 // // Route::get('/comentario/create', 'App\Http\Controllers\ProjectController@create')->name('projects.create');

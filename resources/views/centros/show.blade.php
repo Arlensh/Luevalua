@@ -101,7 +101,33 @@
             </div>
         </div>
 
-        @include('comentarios.index')
+        {{-- @include('comentarios.index') --}}
+
+        <h1>Comentarios</h1>
+
+        {{-- @if ({{ Auth::user()->id_centro=$centro->codigo}})
+        <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
+        @endif --}}
+
+        @auth
+            <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
+        @endauth
+        <ul>
+            @forelse($comentarios as $comentario)
+                <li class="list-group-item border-0 mb-3-shadow-sm">
+                    <a class="d-flex justify-content-between align-items-center" href="{{-- route('centros.coment', $comentario) --}}">
+                        <span class="text-secondary font-weight-bold">{{ $comentario->title }}</span>
+                        <span class="text-black-50">{{ $comentario->description }}</span>
+                        <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
+                    </a>
+                </li>
+            @empty
+                <li class="list-group-item border-0 mb-3-shadow-sm">
+                    No existe ningun centro
+                </li>
+            @endforelse
+        </ul>
+
 
     </div>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"

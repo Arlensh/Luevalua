@@ -86,7 +86,7 @@
                                         <option value="">@lang('eligetucentro')</option>
                                         @foreach ($centros as $centro)
                                             <option class="d-flex justify-content-between align-items-center"
-                                                value="{{ $centro->id }}">
+                                                value="{{ $centro->codigo }}">
                                                 {{-- ucfirst(strtolower($centro->denominacion_especifica)) --}}
                                                 {{ $centro->denominacion_especifica }} @lang('from') {{ $centro->direccion}}
                                             </option>

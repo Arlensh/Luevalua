@@ -39,11 +39,17 @@ class CentroController extends Controller
         // ]);
     }
 
-    public function create()
+    public function create(Centro $centro)
     {
-        return view('centros.create', [
-            'centro' => new Centro
-        ]);
+        // return view('centros.create', [
+        //     'centro' => new Centro
+        // ]);
+
+        // return $centro;
+            // return view('comen
+            return view('centros.create', [
+                'centro' => $centro
+            ]);
     }
 
     /**
@@ -58,9 +64,18 @@ class CentroController extends Controller
         //guardo la variable fields el json que me devuelve el formulario, con la funcion validate hago que solo se validen los atributos que yo escoja.
         //todo esto para que no se modifiquen atributos que no queremos como el "approved" o la "id"
 
-        Centro::create($request->validated());
+        // Centro::create($request->validated());
 
-        return redirect()->route('centros.index')->with('status', 'El proyecto fue creado con éxito');
+        // return redirect()->route('centros.index')->with('status', 'El proyecto fue creado con éxito');
+
+
+
+        $title = request('title');
+
+    Coment::create([
+        'title' => $title,
+
+    ]);
     }
 
     /**
