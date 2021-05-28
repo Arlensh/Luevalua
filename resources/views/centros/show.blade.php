@@ -20,13 +20,9 @@
         <h1 class="h2 ml-md-5">
             {{ $centro->denominacion }}
         </h1>
-
-        @auth
-            <a class="btn btn-primary" href="{{ route('centros.edit', $centro) }}">@lang('Edit')</a>
-        @endauth
         @auth
             @if (auth()->user()->centro===$centro->codigo && auth()->user()->role===3 || auth()->user()->role===1)
-                <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
+            <a class="btn btn-primary" href="{{ route('centros.edit', $centro) }}">@lang('Edit')</a>
             @endif
         @endauth
     </div>
@@ -117,12 +113,14 @@
 
         <ul>
             @forelse($comentarios as $comentario)
-                <li class="list-group-item border-0 mb-3-shadow-sm">
-                    <a class="d-flex justify-content-between align-items-center" href="{{-- route('centros.coment', $comentario) --}}">
-                        <span class="text-secondary font-weight-bold">{{ $comentario->title }}</span>
-                        <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
-                    </a>
-                </li>
+                @if ($comentario->id_centro===$centro->codigo)
+                    <li class="list-group-item border-0 mb-3-shadow-sm">
+                        <a class="d-flex justify-content-between align-items-center" href="{{-- route('centros.coment', $comentario) --}}">
+                            <span class="text-secondary font-weight-bold">{{ $comentario->title }}</span>
+                            <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
+                        </a>
+                    </li>
+                @endif
             @empty
                 <li class="list-group-item border-0 mb-3-shadow-sm">
                     No existe ningun centro

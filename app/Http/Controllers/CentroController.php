@@ -128,8 +128,9 @@ class CentroController extends Controller
 
         // return view('centros.show', [
         //     'centro' => $centro,
-        //     'comentarios' => Coment::where('id_centro', 3013297),
+        //     'comentarios' => Coment::name($id_centro ->get($centro->codigo))
         // ]);
+
 
         }
 

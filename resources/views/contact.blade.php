@@ -16,7 +16,7 @@
                         @lang('nombre') <input id="name"
                             class="form-control bg-light shadow-sm @error('name') is-invalid @else border-0 @enderror"
                             type="text" name="name" placeholder=@lang('nombre')
-                            value="{{ Auth::user()->name ?? old('name') }}" @if (Auth::user()->name ?? '') onlyread @endif>
+                            value="{{ Auth::user()->name ?? old('name') }}" @if (Auth::user()->name ?? '') readonly @endif>
                             {{-- value="{{ old('name') }}"> --}}
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                         <input id="email"
                             class="form-control bg-light shadow-sm @error('name') is-invalid @else border-0 @enderror"
                             type="email" name="email" id="email" placeholder=@lang('email')
-                            value="{{ Auth::user()->email ?? old('email') }}" @if (Auth::user()->email ?? '') onlyread @endif>
+                            value="{{ Auth::user()->email ?? old('email') }}" @if (Auth::user()->email ?? '') readonly @endif>
                             {{-- value="{{ old('email') }}"> --}}
                         @error('email')
                             <span class="invalid-feedback" role="alert">
