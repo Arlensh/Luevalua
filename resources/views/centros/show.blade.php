@@ -24,14 +24,12 @@
         @auth
             <a class="btn btn-primary" href="{{ route('centros.edit', $centro) }}">@lang('Edit')</a>
         @endauth
+        @auth
+            @if (auth()->user()->centro===$centro->codigo && auth()->user()->role===3 || auth()->user()->role===1)
+                <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
+            @endif
+        @endauth
     </div>
-
-    {{-- @auth
-        <form action="{{ route('centros.destroy', $centro) }}" method="POST">
-            @csrf @method('DELETE')
-            <button>Eliminar</button>
-        </form>
-    @endauth --}}
 
     {!! $centro->content !!}
 
@@ -101,23 +99,27 @@
             </div>
         </div>
 
-        {{-- @include('comentarios.index') --}}
+
+
+
+
+
+
+
 
         <h1>Comentarios</h1>
 
-        {{-- @if ({{ Auth::user()->id_centro=$centro->codigo}})
-        <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
-        @endif --}}
+            @auth
+                @if (auth()->user()->centro===$centro->codigo || auth()->user()->role===1)
+                    <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
+                @endif
+            @endauth
 
-        @auth
-            <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
-        @endauth
         <ul>
             @forelse($comentarios as $comentario)
                 <li class="list-group-item border-0 mb-3-shadow-sm">
                     <a class="d-flex justify-content-between align-items-center" href="{{-- route('centros.coment', $comentario) --}}">
                         <span class="text-secondary font-weight-bold">{{ $comentario->title }}</span>
-                        <span class="text-black-50">{{ $comentario->description }}</span>
                         <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
                     </a>
                 </li>
@@ -130,6 +132,18 @@
 
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin="">
@@ -191,5 +205,12 @@
         marker.bindPopup(
             "<b><strong>{{ $centro->denominacion }}</strong></b>");
 
+
+
+
+            //evito que se recarge la página
+            if (window.history.replaceState) { // verificamos disponibilidad
+                window.history.replaceState(null, null, window.location.href);
+            }
     </script>
 @endsection

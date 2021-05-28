@@ -23,7 +23,7 @@ Route::view('/', 'home')->name('home');
 Route::resource('centros', 'App\Http\Controllers\CentroController')->names('centros');
 Route::patch('/centro/{centro}', 'App\Http\Controllers\CentroController@update')->name('centro.update');
 Route::get('/centros/{centro}/comment', 'App\Http\Controllers\CentroController@create')->name('centros.create');
-Route::post('/centros', 'App\Http\Controllers\CentroController@store')->name('centro.store');
+Route::post('/centros/{centro}', 'App\Http\Controllers\CentroController@store')->name('centros.store');
 
 // Route::get('/centros/comment', 'App\Http\Controllers\ComentarioController@')->name('comentarios.show');
 

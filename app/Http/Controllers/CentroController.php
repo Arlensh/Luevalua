@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveProjectRequest;
 use App\Models\Centro;
 use App\Models\Coment;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Session;
@@ -24,6 +26,10 @@ class CentroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+
     public function index(Request $query)
     {
 
@@ -38,6 +44,12 @@ class CentroController extends Controller
         //     'centros' => Centro::orderBy('id_auto', 'asc')->paginate(20)
         // ]);
     }
+
+
+
+
+
+
 
     public function create(Centro $centro)
     {
@@ -58,7 +70,12 @@ class CentroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SaveProjectRequest $request)
+
+
+
+
+
+    public function store(Centro $centro)
     {
         //metodo mas eficiente:
         //guardo la variable fields el json que me devuelve el formulario, con la funcion validate hago que solo se validen los atributos que yo escoja.
@@ -69,14 +86,23 @@ class CentroController extends Controller
         // return redirect()->route('centros.index')->with('status', 'El proyecto fue creado con éxito');
 
 
-
-        $title = request('title');
+// return request();
 
     Coment::create([
-        'title' => $title,
+        'title' => request('title'),
+        'description' => request('title'),
+        'id_user' => request('id_user'),
+        'id_centro' => request('id_centro'),
 
     ]);
-    }
+
+    // return redirect()->route('centros.show')->with('status', 'El proyecto fue creado con éxito');
+    $comentarios = Coment::all();
+
+    return view('centros.show',compact('centro','comentarios')) ;
+    // return redirect()->route('centros.index');
+
+}
 
     /**
      * Display the specified resource.
@@ -84,17 +110,28 @@ class CentroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+
+
     public function show(Centro $centro)
     {
 
         // return Centro::find($centro);
 
         $comentarios = Coment::all();
+        //  $comentarios = Coment::where('id_centro', $centro->codigo);
 
         return view('centros.show', [
-            'centro' => $centro
+            'centro' => $centro,
         ], compact('comentarios'));
-    }
+
+        // return view('centros.show', [
+        //     'centro' => $centro,
+        //     'comentarios' => Coment::where('id_centro', 3013297),
+        // ]);
+
+        }
 
     /**
      * Update the specified resource in storage.
@@ -108,6 +145,10 @@ class CentroController extends Controller
     //     $centro->update($request->validated());
     //     return redirect()->route('centros.show', $centro)->with('status', 'El proyecto fue actualizado con éxito');
     // }
+
+
+
+
     public function update(Centro $centro)
     {
         $centro->update([
@@ -124,11 +165,23 @@ class CentroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+
+
+
+
     public function destroy(Centro $centro)
     {
         // $centro->delete();
         return redirect()->route('centros.index')->with('status', 'El proyecto fue eliminado con éxito');
     }
+
+
+
+
+
+
 
     public function edit(Centro $centro)
     {
