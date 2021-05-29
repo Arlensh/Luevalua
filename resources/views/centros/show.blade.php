@@ -102,28 +102,36 @@
 
 
 
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3 border-top pt-3">
+            <a class="btn d-none d-md-block position-absolute py-1 px-2" href="#"><i class="fas fa-arrow-up"></i></a>
 
-        <h1>Comentarios</h1>
+            <h1 class="h2 ml-md-5">
+                Comentarios
+                @auth
+                    @if (auth()->user()->centro===$centro->codigo || auth()->user()->role===1)
+                        <a class="btn btn-primary" href="{{ route('centros.create', $centro) }}">Comentar</a>
+                    @endif
+                @endauth
+            </h1>
 
-            @auth
-                @if (auth()->user()->centro===$centro->codigo || auth()->user()->role===1)
-                    <a href="{{ route('centros.create',$centro) }}">Crear comentario</a>
-                @endif
-            @endauth
+        </div>
+
 
         <ul>
             @forelse($comentarios as $comentario)
                 @if ($comentario->id_centro===$centro->codigo)
-                    <li class="list-group-item border-0 mb-3-shadow-sm">
-                        <a class="d-flex justify-content-between align-items-center" href="{{-- route('centros.coment', $comentario) --}}">
-                            <span class="text-secondary font-weight-bold">{{ $comentario->title }}</span>
+                    <li class="list-group-item border-0 mb-3-shadow-sm d-flex justify-content-between align-items-center mb-1 mr-md-5">
+                            <span class="text-secondary mr-5">
+                                <span class="font-weight-bold">{{ $comentario->title }}</span> <br>
+                                @lang('autor') {{ $comentario->id_user}} <br>
+                                {{ $comentario->description }}
+                            </span>
                             <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
-                        </a>
                     </li>
                 @endif
-            @empty
+                @empty
                 <li class="list-group-item border-0 mb-3-shadow-sm">
-                    No existe ningun centro
+                    @lang('nocomentarios')
                 </li>
             @endforelse
         </ul>

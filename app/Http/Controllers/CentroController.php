@@ -88,19 +88,31 @@ class CentroController extends Controller
 
 // return request();
 
-    Coment::create([
-        'title' => request('title'),
-        'description' => request('title'),
-        'id_user' => request('id_user'),
-        'id_centro' => request('id_centro'),
+    // Coment::create([
+    //     'title' => request('title'),
+    //     'description' => request('title'),
+    //     'id_user' => request('id_user'),
+    //     'id_centro' => request('id_centro'),
 
-    ]);
+    // ]);
 
     // return redirect()->route('centros.show')->with('status', 'El proyecto fue creado con éxito');
-    $comentarios = Coment::all();
+    // $comentarios = Coment::all();
 
-    return view('centros.show',compact('centro','comentarios')) ;
+    // return view('centros.show',compact('centro','comentarios')) ;
     // return redirect()->route('centros.index');
+
+
+    $fields = request()->validate([
+        'title' =>'required',
+        'description' => 'required',
+        'id_centro' => 'required',
+        'id_user' => 'required',
+    ]);
+
+    Coment::create($fields);
+
+    return redirect()->route('centros.show', compact('centro'));
 
 }
 
@@ -189,5 +201,11 @@ class CentroController extends Controller
         return view('centros.edit', [
             'centro' => $centro
         ]);
+    }
+
+
+    public function showComent(Coment $comentario)
+    {
+        return $comentario;
     }
 }

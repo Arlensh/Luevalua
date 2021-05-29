@@ -31,7 +31,6 @@
                             class="form-control bg-light shadow-sm @error('name') is-invalid @else border-0 @enderror"
                             type="email" name="email" id="email" placeholder=@lang('email')
                             value="{{ Auth::user()->email ?? old('email') }}" @if (Auth::user()->email ?? '') readonly @endif>
-                            {{-- value="{{ old('email') }}"> --}}
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
