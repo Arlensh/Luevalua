@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Contact')
+@section('title', 'Contacto')
 
 @section('content')
     <div class="conainer">
@@ -17,7 +17,6 @@
                             class="form-control bg-light shadow-sm @error('name') is-invalid @else border-0 @enderror"
                             type="text" name="name" placeholder=@lang('nombre')
                             value="{{ Auth::user()->name ?? old('name') }}" @if (Auth::user()->name ?? '') readonly @endif>
-                            {{-- value="{{ old('name') }}"> --}}
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

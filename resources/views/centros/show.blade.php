@@ -16,13 +16,12 @@
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3 border-bottom">
         <a class="btn d-none d-md-block position-absolute py-1 px-2" href="{{ route('centros.index') }}"><i class="fas fa-arrow-left"></i></a>
-
         <h1 class="h2 ml-md-5">
             {{ $centro->denominacion }}
         </h1>
         @auth
             @if (auth()->user()->centro===$centro->codigo && auth()->user()->role===3 || auth()->user()->role===1)
-            <a class="btn btn-primary" href="{{ route('centros.edit', $centro) }}">@lang('Edit')</a>
+                <a class="btn btn-primary" href="{{ route('centros.edit', $centro) }}">@lang('Edit')</a>
             @endif
         @endauth
     </div>
@@ -33,23 +32,22 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="about-text go-to">
-                    {{-- <h6 class="theme-color lead">Información general</h6> --}}
                     <div class="row about-list mb-5">
                         <div class="col-md-6">
                             <div class="media">
-                                <label>Direccion</label>
+                                <label>@lang('direccion')</label>
                                 <p>{{ $centro->direccion }}</p>
                             </div>
                             <div class="media">
-                                <label>Número</label>
+                                <label>@lang('numero')</label>
                                 <p>{{ $centro->num }}</p>
                             </div>
                             <div class="media">
-                                <label>Régimen</label>
+                                <label>@lang('regimen')</label>
                                 <p>{{ $centro->regimen }}</p>
                             </div>
                             <div class="media">
-                                <label>Tipo Via</label>
+                                <label>@lang('tipo via')</label>
                                 <p>{{ $centro->tipo_via }}</p>
                             </div>
                             <div class="media">
@@ -57,15 +55,15 @@
                                 <p>{{ $centro->cp }}</p>
                             </div>
                             <div class="media">
-                                <label>Localidad</label>
+                                <label>@lang('localidad')</label>
                                 <p>{{ $centro->localidad }}</p>
                             </div>
                             <div class="media">
-                                <label>Provincia</label>
+                                <label>@lang('provincia')</label>
                                 <p>{{ $centro->provincia }}</p>
                             </div>
                             <div class="media">
-                                <label>Teléfono</label>
+                                <label>@lang('telefono')</label>
                                 <p>{{ $centro->telefono }}</p>
                             </div>
                             <div class="media">
@@ -73,7 +71,7 @@
                                 <p>{{ $centro->fax }}</p>
                             </div>
                             <div class="media">
-                                <label>Comarca</label>
+                                <label>@lang('comarca')</label>
                                 <p>{{ $centro->comarca }}</p>
                             </div>
                             <div class="media" style="display: none">
@@ -96,37 +94,36 @@
         </div>
 
 
-
-
-
-
-
-
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3 border-top pt-3">
             <a class="btn d-none d-md-block position-absolute py-1 px-2" href="#"><i class="fas fa-arrow-up"></i></a>
 
             <h1 class="h2 ml-md-5">
-                Comentarios
+                @lang('comentarios')
                 @auth
                     @if (auth()->user()->centro===$centro->codigo || auth()->user()->role===1)
-                        <a class="btn btn-primary" href="{{ route('centros.create', $centro) }}">Comentar</a>
+                        <a class="btn " href="{{ route('centros.create', $centro) }}"><i class="fas fa-plus"></i></a>
                     @endif
                 @endauth
             </h1>
 
         </div>
 
-
         <ul>
             @forelse($comentarios as $comentario)
                 @if ($comentario->id_centro===$centro->codigo)
                     <li class="list-group-item border-0 mb-3-shadow-sm d-flex justify-content-between align-items-center mb-1 mr-md-5">
                             <span class="text-secondary mr-5">
-                                <span class="font-weight-bold">{{ $comentario->title }}</span> <br>
+
+                                <span class="font-weight-bold">{{ $comentario->title }}</span>
+                                <br>
                                 @lang('autor') {{ $comentario->id_user}} <br>
                                 {{ $comentario->description }}
                             </span>
                             <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
+                              <form action="{{ route('centros.destroy',$centro,$comentario)}}" method="POST">
+                                    @csrf @method('DELETE')
+                                    <button type="buttont" class="btn text-danger"><i class="fas fa-flag"></i></button>
+                                </form>
                     </li>
                 @endif
                 @empty
@@ -135,18 +132,7 @@
                 </li>
             @endforelse
         </ul>
-
-
     </div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -161,9 +147,6 @@
 
         var longValue = parseFloat(long);
         var latValue = parseFloat(lat);
-
-        // console.log(longValue);
-        // console.log(latValue);
 
         var mymap = L.map('mimapa').setView([latValue, longValue], 18);
 

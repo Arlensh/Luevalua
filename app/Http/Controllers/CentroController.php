@@ -11,201 +11,66 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Session;
 
-class CentroController extends Controller
-{
-
-    public function __construct()
-    {
-        // Only seria para los que queremos que los autentifique
-        // $this->middleware('auth')->only('create', 'edit');
-        // Except para lo contrario, como hay menos, es mejor usar este
+class CentroController extends Controller{
+    public function __construct(){
         $this->middleware('auth')->except('index', 'show');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
+    // Function to show all centers by calling the DB
+    public function index(Request $query){
+        // I take all the centers by default, but if I use the input to search, it will search for the word entered in the table name_specifies in ascending order
+        return view('centros.index', ['centros' => Centro::name($query->get('cntr'))->orderBy('denominacion_especifica', 'asc')->paginate(1000)]);
+    }
 
+    // Function to create the comments
+    public function create(Centro $centro){
+        return view('centros.create', ['centro' => $centro])->with('status', 'El comentario fue creado con éxito');
+    }
 
+    // Function to validate the data that I enter in the centers.create, then I return the view centers.show with the variable center of which I have commented
+    public function store(Centro $centro){
 
-    public function index(Request $query)
-    {
-
-        // $centros = Centro::denominacion_especifica($centro->get('denominacion_especifica'))->orderBy('id_auto', 'asc')->paginate(20);
-        // return view('centros.index', compact('centros'));
-        return view('centros.index', [
-            'centros' => Centro::name($query->get('cntr'))->orderBy('denominacion_especifica', 'asc')->paginate(4000)
+        $fields = request()->validate([
+            'title' =>'required|max:50',
+            'description' => 'required|min:3|max:300',
+            'id_centro' => 'required',
+            'id_user' => 'required',
         ]);
 
+        Coment::create($fields);
 
-        // return view('centros.index', [
-        //     'centros' => Centro::orderBy('id_auto', 'asc')->paginate(20)
-        // ]);
+        return redirect()->route('centros.show', compact('centro'));
+
     }
 
-
-
-
-
-
-
-    public function create(Centro $centro)
-    {
-        // return view('centros.create', [
-        //     'centro' => new Centro
-        // ]);
-
-        // return $centro;
-            // return view('comen
-            return view('centros.create', [
-                'centro' => $centro
-            ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-
-
-
-    public function store(Centro $centro)
-    {
-        //metodo mas eficiente:
-        //guardo la variable fields el json que me devuelve el formulario, con la funcion validate hago que solo se validen los atributos que yo escoja.
-        //todo esto para que no se modifiquen atributos que no queremos como el "approved" o la "id"
-
-        // Centro::create($request->validated());
-
-        // return redirect()->route('centros.index')->with('status', 'El proyecto fue creado con éxito');
-
-
-// return request();
-
-    // Coment::create([
-    //     'title' => request('title'),
-    //     'description' => request('title'),
-    //     'id_user' => request('id_user'),
-    //     'id_centro' => request('id_centro'),
-
-    // ]);
-
-    // return redirect()->route('centros.show')->with('status', 'El proyecto fue creado con éxito');
-    // $comentarios = Coment::all();
-
-    // return view('centros.show',compact('centro','comentarios')) ;
-    // return redirect()->route('centros.index');
-
-
-    $fields = request()->validate([
-        'title' =>'required',
-        'description' => 'required',
-        'id_centro' => 'required',
-        'id_user' => 'required',
-    ]);
-
-    Coment::create($fields);
-
-    return redirect()->route('centros.show', compact('centro'));
-
-}
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-
-
-
-    public function show(Centro $centro)
-    {
-
-        // return Centro::find($centro);
-
+    // Function that I use to show the page of the center that I have previously selected in centers.index, I pass the variable center and then all the comments
+    public function show(Centro $centro){
         $comentarios = Coment::all();
-        //  $comentarios = Coment::where('id_centro', $centro->codigo);
+        return view('centros.show', ['centro' => $centro], compact('comentarios'));
+    }
 
-        return view('centros.show', [
-            'centro' => $centro,
-        ], compact('comentarios'));
+    // Function to update what is inside the content of the center that is being edited
+    public function update(Centro $centro){
 
-        // return view('centros.show', [
-        //     'centro' => $centro,
-        //     'comentarios' => Coment::name($id_centro ->get($centro->codigo))
-        // ]);
-
-
-        }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function update(Centro $centro, SaveProjectRequest $request)
-    // {
-    //     $centro->update($request->validated());
-    //     return redirect()->route('centros.show', $centro)->with('status', 'El proyecto fue actualizado con éxito');
-    // }
-
-
-
-
-    public function update(Centro $centro)
-    {
-        $centro->update([
-            'content' => request('content'),
-        ]);
+        $centro->update(['content' => request('content')]);
 
         return redirect()->route('centros.show', $centro);
     }
 
+    // Function to go to the page of center.edit, passing it the variable center so that it knows which center is being edited
+    public function edit(Centro $centro){
+        return view('centros.edit', ['centro' => $centro]);
+    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Function to delete the selected comment (it is not implemented yet since I want to implement a complaints system for the future)
+    public function destroy(Centro $centro, Coment $comment){
 
+        // return $comment;
+        $comment->delete();
 
+        return redirect()->route('centros.show', $centro)->with('status', 'Se ha enviado la denuncia, se comprobará si el comentario es inapropiado. ¡MUCHAS GRACIAS!');
 
-
-
-
-    public function destroy(Centro $centro)
-    {
-        // $centro->delete();
-        return redirect()->route('centros.index')->with('status', 'El proyecto fue eliminado con éxito');
     }
 
 
-
-
-
-
-
-    public function edit(Centro $centro)
-    {
-        return view('centros.edit', [
-            'centro' => $centro
-        ]);
-    }
-
-
-    public function showComent(Coment $comentario)
-    {
-        return $comentario;
-    }
 }

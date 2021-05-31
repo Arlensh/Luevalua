@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Centro')
+@section('title', 'Centros')
 
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3 border-bottom">
@@ -9,9 +9,6 @@
         </h1>
     </div>
     <div class="container">
-        {{-- @auth
-            <a href="{{ route('centros.create') }}">Crear Proyecto</a>
-        @endauth --}}
         {!! Form::open(['route' => 'centros.index', 'method' => 'GET', 'class' => '', 'role' => 'search']) !!}
         <div
             class="d-flex justify-content-between align-items-center pb-3 px-0 col-12 offset-md-5 col-md-7 offset-lg-7 col-lg-5">

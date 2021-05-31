@@ -88,7 +88,7 @@
                                             <option class="d-flex justify-content-between align-items-center"
                                                 value="{{ $centro->codigo }}">
                                                 {{-- ucfirst(strtolower($centro->denominacion_especifica)) --}}
-                                                {{ $centro->denominacion_especifica }} @lang('from') {{ $centro->direccion}}
+                                                {{ $centro->denominacion_especifica }} @lang('from') {{ $centro->localidad}}
                                             </option>
                                         @endforeach
                                     </select>

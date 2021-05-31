@@ -1,4 +1,7 @@
 <!-- WHATSAPP -->
+
+{{-- Server that I use so that they can contact me by WhatsApp, either by web browsing or by a mobile device. --}}
+
 <div id='whatsapp-chat' class='hide'>
     <div class='header-chat'>
         <div class='head-home'>

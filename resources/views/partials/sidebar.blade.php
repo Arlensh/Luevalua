@@ -53,36 +53,7 @@
                         </a>
                     </li>
                 </ul>
-                {{-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-3 mb-1 text-muted">
-                    <span>
-                        @lang('noticias')
-                    </span>
-                    <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                        <span data-feather="plus-circle">
-                        </span>
-                    </a>
-                </h6> --}}
                 <ul class="nav flex-column mb-2">
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-university text-info"></i>
-                            @lang('educacion')
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-graduation-cap text-info"></i>
-                            @lang('alumnado')
-                        </a>
-                    </li> --}}
-                    <li class="nav-item">
-                        @auth
-                            <a class="text-danger nav-link" href=""
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> @lang('Log out')
-                            </a>
-                        @endauth
-                    </li>
                     <li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -98,38 +69,38 @@
                         <section class="mb-0">
                             <!-- Facebook -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
-                                style="background-color: #3b5998" href="https://www.facebook.com/" role="button">
+                                style="background-color: #3b5998" href="https://www.facebook.com/" role="button" target="_blank">
                                 <i class="fab fa-facebook-f">
                                 </i>
                             </a>
                             <!-- Twitter -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
-                                style="background-color: #55acee" href="https://twitter.com/" role="button">
+                                style="background-color: #55acee" href="https://twitter.com/" role="button" target="_blank">
                                 <i class="fab fa-twitter">
                                 </i>
                             </a>
                             <!-- Google -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
-                                style="background-color: #dd4b39" href="https://mail.google.com/" role="button">
+                                style="background-color: #dd4b39" href="https://mail.google.com/" role="button" target="_blank">
                                 <i class="fab fa-google">
                                 </i>
                             </a>
                             <!-- Instagram -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
-                                style="background-color: #ac2bac" href="https://www.instagram.com/" role="button">
+                                style="background-color: #ac2bac" href="https://www.instagram.com/" role="button" target="_blank">
                                 <i class="fab fa-instagram">
                                 </i>
                             </a>
                             <!-- Linkedin -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
-                                style="background-color: #0082ca" href="https://es.linkedin.com/" role="button">
+                                style="background-color: #0082ca" href="https://es.linkedin.com/" role="button" target="_blank">
                                 <i class="fab fa-linkedin-in">
                                 </i>
                             </a>
                             <!-- Github -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
                                 style="background-color: #333333" href="https://github.com/Arlensh/Luevalua-laravel"
-                                role="button">
+                                role="button" target="_blank">
                                 <i class="fab fa-github">
                                 </i>
                             </a>

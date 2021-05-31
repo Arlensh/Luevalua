@@ -99,6 +99,10 @@
     "from":"de",
     "nocomentarios": "Sin comentarios",
     "autor": "Autor:",
+    "titulo": "Titulo",
+    "descripcion":"Descripción",
+    "comentario": "Comentario",
+    "comentarios": "Comentarios",
 
     "30 Days": "30 Dias",
     "60 Days": "60 Dias",
