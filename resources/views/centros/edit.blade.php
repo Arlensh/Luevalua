@@ -36,6 +36,8 @@
 
             </script>
 
-            <button>Actualizar</button>
+            <button type="submit" class="btn btn-primary">
+                @lang('actualizar')
+            </button>
         </form>
 @endsection
