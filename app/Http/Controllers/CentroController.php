@@ -29,18 +29,14 @@ class CentroController extends Controller{
 
     // Function to validate the data that I enter in the centers.create, then I return the view centers.show with the variable center of which I have commented
     public function store(Centro $centro){
-
         $fields = request()->validate([
             'title' =>'required|max:50',
             'description' => 'required|min:3|max:300',
             'id_centro' => 'required',
             'id_user' => 'required',
         ]);
-
         Coment::create($fields);
-
         return redirect()->route('centros.show', compact('centro'));
-
     }
 
     // Function that I use to show the page of the center that I have previously selected in centers.index, I pass the variable center and then all the comments
@@ -51,9 +47,7 @@ class CentroController extends Controller{
 
     // Function to update what is inside the content of the center that is being edited
     public function update(Centro $centro){
-
         $centro->update(['content' => request('content')]);
-
         return redirect()->route('centros.show', $centro);
     }
 
@@ -64,13 +58,8 @@ class CentroController extends Controller{
 
     // Function to delete the selected comment (it is not implemented yet since I want to implement a complaints system for the future)
     public function destroy(Centro $centro, Coment $comment){
-
-        // return $comment;
         $comment->delete();
-
         return redirect()->route('centros.show', $centro)->with('status', 'Se ha enviado la denuncia, se comprobará si el comentario es inapropiado. ¡MUCHAS GRACIAS!');
-
     }
-
 
 }

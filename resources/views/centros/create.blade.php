@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="description">@lang('descripcion')</label>
                         <input id="content"
-                            class="form-control bg-light shadow-sm @error('content') is-invalid @else border-0 @enderror"
+                            class="form-control bg-light shadow-sm py-3 @error('content') is-invalid @else border-0 @enderror"
                             type="text" name="description" id="description" placeholder=@lang('descripcion')
                             value="{{ old('description') }}">
                             @error('description')
@@ -38,7 +38,6 @@
                         @enderror
                     </div>
                     <br>
-
 
                     <label class="d-none" for="">
                         @lang('user')

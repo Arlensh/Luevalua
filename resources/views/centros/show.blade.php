@@ -95,9 +95,8 @@
 
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3 border-top pt-3">
-            <a class="btn d-none d-md-block position-absolute py-1 px-2" href="#"><i class="fas fa-arrow-up"></i></a>
 
-            <h1 class="h2 ml-md-5">
+            <h1 class="h2">
                 @lang('comentarios')
                 @auth
                     @if (auth()->user()->centro===$centro->codigo || auth()->user()->role===1)
@@ -127,8 +126,8 @@
                     </li>
                 @endif
                 @empty
-                <li class="list-group-item border-0 mb-3-shadow-sm">
-                    @lang('nocomentarios')
+                <li class="list-group-item border-0 mb-3-shadow-sm ">
+                    <strong>@lang('nocomentarios')</strong>
                 </li>
             @endforelse
         </ul>

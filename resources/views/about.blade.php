@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'About')
+@section('title', 'Sobre mi')
 
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3 border-bottom">
