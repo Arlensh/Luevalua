@@ -11,56 +11,22 @@
         </h1>
     </div>
     <div class="container">
-        <div id="particles-js" style="top: 0; left: 0; width: 100%; height: 500px; background: #000000; ">
-        </div>
-        <div class="text-center my-4">
-            <h2>
-                @lang('index_titulo')
-            </h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam beatae
-                quia rem dicta delectus in ipsam placeat minus excepturi ipsum qui
-                odit alias dolore nisi, autem, saepe molestiae natus corrupti?
-            </p>
-        </div>
-
         <div class="carousel slide" id="main-carousel" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
                 <li data-target="#main-carousel" data-slide-to="1"></li>
-                <li data-target="#main-carousel" data-slide-to="2"></li>
-                <li data-target="#main-carousel" data-slide-to="3"></li>
             </ol><!-- /.carousel-indicators -->
-
             <div class="carousel-inner">
+                <div class="carousel-item ">
+                    <img style="width:100%;max-width:1200px;height:500px;" class="d-block img-fluid" src="https://s3.eu-west-3.amazonaws.com/buscocolegio-static-content/assets/46017675/0.jpg" alt="">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="text-dark">Ies la Sénia</h1>
+                        <p class="text-dark">@lang('subtituloSenia')</p>
+                    </div>
+                </div>
                 <div class="carousel-item active">
-                    <img class="d-block img-fluid" src="https://s19.postimg.cc/qzj5uncgj/slide1.jpg" alt="">
+                    <img style="width:100%;max-width:1200px;height:500px;" class="d-block img-fluid" src="https://www.isepceu.es/blog/wp-content/uploads/2017/07/slide2861-1024x4261.jpg" alt="">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1>Mountain</h1>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block img-fluid" src="https://s19.postimg.cc/lmubh3h0j/slide2.jpg" alt="">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>Mountain</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem
-                            fugit, numquam minus!</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block img-fluid" src="https://s19.postimg.cc/99hh9lr5v/slide3.jpg" alt="">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>Mountain</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem
-                            fugit, numquam minus!</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://s19.postimg.cc/nenabzsnn/slide4.jpg" alt="" class="d-block img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>Mountain</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem
-                            fugit, numquam minus!</p>
                     </div>
                 </div>
             </div><!-- /.carousel-inner -->
@@ -75,14 +41,20 @@
             </a>
         </div><!-- /.carousel -->
 
+        <div class="text-center m-5">
+            <h2>
+                @lang('eslogan')
+            </h2>
+            <p>
+                @lang('bajoeslogan')
+            </p>
+          </div>
 
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-6 mt-2">
-                <p class="lead text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ducimus, fuga
-                    iusto deleniti reprehenderit velit nemo qui ex, delectus, dolorum cupiditate nesciunt sapiente sint
-                    recusandae? Eaque sit quidem quaerat at eligendi debitis voluptatibus neque exercitationem!</p>
-                <a class="btn btn-lg btn-block btn-primary" href="{{ route('contact') }}">Contáctame</a>
-                <a class="btn btn-lg btn-block btn-outline-primary" href="{{ route('centros.index') }}">Centros</a>
+            <div class="col-12 col-md-6 col-lg-6 mt-5">
+                <p class="lead text-secondary">@lang('text1')</p>
+                <a class="btn btn-lg btn-block btn-primary" href="{{ route('contact') }}">@lang('contacto')</a>
+                <a class="btn btn-lg btn-block btn-outline-primary" href="{{ route('centros.index') }}">@lang('centros')</a>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
                 <img class="img-fluid my-4" src="/img/web_developer.svg" alt="Desarrollo Web">
@@ -157,7 +129,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         particlesJS("particles-js", {
             particles: {
                 number: {
@@ -269,5 +241,5 @@
             retina_detect: true,
         }); //var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
 
-    </script>
+    </script> --}}
 @endsection

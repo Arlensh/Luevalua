@@ -22,7 +22,7 @@
                     <a class="d-flex justify-content-between align-items-center p-3"
                         href="{{ route('centros.show', $centro) }}">
                         <span class="text-secondary font-weight-bold">{{ $centro->denominacion_especifica }} @lang('from') {{ $centro->localidad }}</span>
-                        <span class="text-black-50">{{ $centro->codigo }}</span>
+                        <span class="text-black-50">{{ $centro->centro }}</span>
                     </a>
                 </li>
             @empty

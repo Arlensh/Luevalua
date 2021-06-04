@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="description">@lang('descripcion')</label>
                         <input id="content"
-                            class="form-control bg-light shadow-sm py-3 @error('content') is-invalid @else border-0 @enderror"
+                            class="form-control bg-light shadow-sm py-3 "
                             type="text" name="description" id="description" placeholder=@lang('descripcion')
                             value="{{ old('description') }}">
                             @error('description')
@@ -45,7 +45,7 @@
                     </label>
                     <label class="d-none" for="">
                         @lang('centro')
-                        <input type="text" name="id_centro" value="{{$centro->codigo}}">
+                        <input type="text" name="id_centro" value="{{$centro->centro}}">
                     </label>
                     <button class="btn btn-primary btn-lg btn-block">@lang('enviar')</button>
                 </form>

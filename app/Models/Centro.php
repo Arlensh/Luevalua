@@ -13,7 +13,7 @@ class Centro extends Model
 
     public function getRouteKeyName()
     {
-        return 'codigo';
+        return 'centro';
     }
     public function scopeName($query, $name)
     {

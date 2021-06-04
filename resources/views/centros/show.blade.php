@@ -20,7 +20,7 @@
             {{ $centro->denominacion }}
         </h1>
         @auth
-            @if (auth()->user()->centro===$centro->codigo && auth()->user()->role===3 || auth()->user()->role===1)
+            @if (auth()->user()->centro===$centro->centro && auth()->user()->role===3 || auth()->user()->role===1)
                 <a class="btn btn-primary" href="{{ route('centros.edit', $centro) }}">@lang('Edit')</a>
             @endif
         @endauth
@@ -99,38 +99,14 @@
             <h1 class="h2">
                 @lang('comentarios')
                 @auth
-                    @if (auth()->user()->centro===$centro->codigo || auth()->user()->role===1)
+                    @if (auth()->user()->centro===$centro->centro || auth()->user()->role===1)
                         <a class="btn " href="{{ route('centros.create', $centro) }}"><i class="fas fa-plus"></i></a>
                     @endif
                 @endauth
             </h1>
 
         </div>
-
-        <ul>
-            @forelse($comentarios as $comentario)
-                @if ($comentario->id_centro===$centro->codigo)
-                    <li class="list-group-item border-0 mb-3-shadow-sm d-flex justify-content-between align-items-center mb-1 mr-md-5">
-                            <span class="text-secondary mr-5">
-
-                                <span class="font-weight-bold">{{ $comentario->title }}</span>
-                                <br>
-                                @lang('autor') {{ $comentario->id_user}} <br>
-                                {{ $comentario->description }}
-                            </span>
-                            <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
-                              <form action="{{ route('centros.destroy',$centro,$comentario)}}" method="POST">
-                                    @csrf @method('DELETE')
-                                    <button type="buttont" class="btn text-danger"><i class="fas fa-flag"></i></button>
-                                </form>
-                    </li>
-                @endif
-                @empty
-                <li class="list-group-item border-0 mb-3-shadow-sm ">
-                    <strong>@lang('nocomentarios')</strong>
-                </li>
-            @endforelse
-        </ul>
+        @include('centros.comentarios')
     </div>
 
 

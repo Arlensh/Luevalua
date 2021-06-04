@@ -1,17 +1,8 @@
 <style>
     @import url("https://fonts.googleapis.com/css?family=Bevan");
 
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background: rgb(40, 40, 40);
-        overflow: hidden;
-    }
-
+    * {padding: 0;margin: 0;box-sizing: border-box;}
+    body {background: rgb(40, 40, 40);overflow: hidden;}
     p {
         font-family: "Bevan", cursive;
         font-size: 130px;
@@ -24,10 +15,7 @@
         -webkit-background-clip: text;
         -moz-background-clip: text;
         background-clip: text;
-
-        span {
-            font-size: 1.2em;
-        }
+        span {font-size: 1.2em;}
     }
 
     code {
@@ -36,27 +24,11 @@
         display: block;
         font-size: 16px;
         margin: 0 30px 25px;
-
-        span {
-            color: #f0c674;
-        }
-
-        i {
-            color: #b5bd68;
-        }
-
-        em {
-            color: #b294bb;
-            font-style: unset;
-        }
-
-        b {
-            color: #81a2be;
-            font-weight: 500;
-        }
+        span {color: #f0c674;}
+        i {color: #b5bd68;}
+        em {color: #b294bb;font-style: unset;}
+        b {color: #81a2be;font-weight: 500;}
     }
-
-
     a {
         color: #8abeb7;
         font-family: monospace;
@@ -67,9 +39,7 @@
     }
 
     @media screen and (max-width: 880px) {
-        p {
-            font-size: 14vw;
-        }
+        p {font-size: 14vw;}
     }
 
 </style>
