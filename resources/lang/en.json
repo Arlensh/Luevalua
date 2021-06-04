@@ -121,6 +121,9 @@
 
     "date": "Date",
     "evento": "Event",
+    "noticia": "New",
+    "otros": "Other",
+    "calendario": "Calendary",
 
     "30 Days": "30 Days",
     "60 Days": "60 Days",

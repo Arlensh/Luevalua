@@ -23,7 +23,7 @@ Route::resource('centros', 'App\Http\Controllers\CentroController')->names('cent
 Route::patch('/centro/{centro}', 'App\Http\Controllers\CentroController@update')->name('centro.update');
 Route::get('/centros/{centro}/comment', 'App\Http\Controllers\CentroController@create')->name('centros.create');
 Route::post('/centros/{centro}', 'App\Http\Controllers\CentroController@store')->name('centros.store');
-Route::delete('/centros/{centro}/comment', 'App\Http\Controllers\CentroController@destroy')->name('centros.destroy');
+Route::delete('/centros/{id}', 'App\Http\Controllers\CentroController@destroy')->name('centros.destroy');
 
 // Route for about me
 Route::view('/about', 'about')->name('about');
@@ -40,13 +40,11 @@ Auth::routes(['verify' => true]);
 // Route that I use to change the language, calling the switchlang function of the LanguageController controller
 Route::get('{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-Route::get('evento/event/{mes}','App\Http\Controllers\ControllerEvent@index_month');
-Route::get('evento/event','App\Http\Controllers\ControllerEvent@index');
-
+// Paths I use for the calendar page
 Route::get('evento/form','App\Http\Controllers\ControllerEvent@form');
+Route::delete('evento/{id}', 'App\Http\Controllers\ControllerEvent@destroy')->name('event.destroy');
 Route::post('evento/create','App\Http\Controllers\ControllerEvent@create');
 Route::get('evento/details/{id}','App\Http\Controllers\ControllerEvent@details');
-Route::get('evento/index','App\Http\Controllers\ControllerEvent@index');
+Route::get('evento/index','App\Http\Controllers\ControllerEvent@index')->name('event.index');
 Route::get('evento/index/{month}','App\Http\Controllers\ControllerEvent@index_month');
 Route::post('evento/calendario','App\Http\Controllers\ControllerEvent@calendario');
-Route::delete('evento/details/{id}', 'App\Http\Controllers\ControllerEvent@destroy');

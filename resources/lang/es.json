@@ -121,6 +121,9 @@
 
     "date": "Fecha",
     "evento": "Evento",
+    "noticia": "Noticia",
+    "otro": "Otros",
+    "calendario": "Calendario",
 
     "30 Days": "30 Dias",
     "60 Days": "60 Dias",

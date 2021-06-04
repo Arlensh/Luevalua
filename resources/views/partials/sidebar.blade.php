@@ -41,8 +41,15 @@
 
                     <li class="{{ setActive('about') }} nav-item nav-link">
                         <a href="{{ route('about') }}">
-                            <i class="fas fa-user  text-info"></i>
+                            <i class="fas fa-user text-info"></i>
                             @lang('sobre mi')
+                        </a>
+                    </li>
+
+                    <li class="{{ setActive('events.*') }} nav-item nav-link">
+                        <a href="{{ route('event.index') }}">
+                            <i class="fas fa-calendar-alt"></i>
+                           @lang('calendario')
                         </a>
                     </li>
 
@@ -53,12 +60,6 @@
                         </a>
                     </li>
 
-                    <li class="{{ setActive('calendario') }} nav-item nav-link">
-                        <a href="{{ asset('/evento/index/') }}">
-                            <i class="fas fa-calendar-alt"></i>
-                           Calendario de eventos
-                        </a>
-                    </li>
                 </ul>
                 <ul class="nav flex-column mb-2">
                     <li>

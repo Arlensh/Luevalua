@@ -7,7 +7,7 @@
 <div class="container">
 
     @if (count($errors) > 0)
-      <div class="alert alert-danger">
+      <div class="alert alert-danger mt-3">
        <button type="button" class="close" data-dismiss="alert">×</button>
        <ul>
         @foreach ($errors->all() as $error)
@@ -17,7 +17,7 @@
       </div>
      @endif
      @if ($message = Session::get('success'))
-     <div class="alert alert-success alert-block">
+     <div class="alert alert-success alert-block mt-3">
       <button type="button" class="close" data-dismiss="alert">×</button>
         <strong>{{ $message }}</strong>
      </div>
@@ -34,7 +34,20 @@
           <input type="text" class="form-control" name="titulo">
         </div>
         <div class="form-group">
+            <select class="form-group" aria-label="tipo" name="tipo">
+                <option selected>Tipo</option>
+                <option value="1">Evento</option>
+                <option value="2">Noticia</option>
+                <option value="3">Otro</option>
+              </select>
+        </div>
+        <div class="form-group">
             <textarea name="descripcion" rows="5" cols="40" class="form-control tinymce-editor"></textarea>
+            </div>
+
+            <div class="form-group d-none">
+                <label>@lang('titulo')</label>
+                <input type="text" class="form-control" name="centro" value={{auth()->user()->centro}}>
             </div>
             <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
             <script type="text/javascript">

@@ -6,37 +6,40 @@
 
 <div class="container">
 
-    <div class="col-md-12">
-      <form action="{{ asset('/evento/create/') }}" method="post">
-        <div class="fomr-group mt-3">
-            <h1><a class="btn" href="{{ asset('/evento/index') }}"><i class="fas fa-arrow-left"></i></a> @lang('evento'): {{ $event->titulo }}</h1>
+    <div class="col-md-12 ">
 
-            <form method="post" action="{{ route('evento.destroy'), 1 }}">
-                <!-- here the '1' is the id of the post which you want to delete -->
-
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-
-                <button type="submit">Delete</button>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap border-bottom">
+            <form action="{{ asset('/evento/create/') }}" method="post">
+                <div class="fomr-group mt-3">
+                    <h1>
+                        <a class="btn" href="{{ asset('/evento/index') }}"><i class="fas fa-arrow-left"></i></a>
+                        @if ($event->tipo==1) @lang('evento'):
+                        @elseif ($event->tipo==2) @lang('noticia'):
+                        @else @lang('otro'):
+                        @endif
+                        {{ $event->titulo }} ({{ $event->fecha }})
+                    </h1>
+                </div>
             </form>
+
+
+            @auth
+                @if (auth()->user()->centro===$event->centro || auth()->user()->role===1)
+                    <form action={{ route('event.destroy', $event) }} method="POST" class="mt-3">
+                        @csrf @method('DELETE')
+                        <button type="buttont" class="btn text-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                @endif
+            @endauth
 
 
         </div>
         <div class="fomr-group mt-5">
-          {!! $event->descripcion !!}
+            {!! $event->descripcion !!}
         </div>
-        <div class="fomr-group">
-          <h4>@lang('date')</h4>
-          {{ $event->fecha }}
-        </div>
-        <br>
-        {{-- <input type="submit" class="btn btn-info" value="Guardar"> --}}
-      </form>
     </div>
 
-
     <!-- inicio de semana -->
-
 
   </div> <!-- /container -->
 

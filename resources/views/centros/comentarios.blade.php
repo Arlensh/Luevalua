@@ -12,11 +12,13 @@
                         {{ $comentario->description }}
                     </span>
                     <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
-                    <form action={{ route('centros.destroy',$centro,$comentario) }} method="POST">
-                        @csrf @method('DELETE')
-                        <button type="buttont" class="btn text-danger"><i class="fas fa-flag"></i></button>
-                    </form>
-            </li>
+                    @auth
+                        <form action={{ route('centros.destroy', $comentario->id, $centro) }} method="POST" class="mt-3">
+                            @csrf @method('DELETE')
+                            <button type="buttont" class="btn text-danger"><i class="fas fa-flag"></i></button>
+                        </form>
+                    @endauth
+                </li>
             <div id="respuesta" class="collapse">
                 <input id="content"
                     class="bg-light shadow-sm py-2 mx-5 @error('content') is-invalid @else border-0 @enderror"

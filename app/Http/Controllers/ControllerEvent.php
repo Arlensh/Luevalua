@@ -18,12 +18,16 @@ class ControllerEvent extends Controller
       $this->validate($request, [
       'titulo'     =>  'required',
       'descripcion'  =>  'required',
+      'centro'  =>  'required',
+      'tipo'  =>  'required',
       'fecha' =>  'required'
      ]);
 
       Event::insert([
         'titulo'       => $request->input("titulo"),
         'descripcion'  => $request->input("descripcion"),
+        'centro'  => $request->input("centro"),
+        'tipo'  => $request->input("tipo"),
         'fecha'        => $request->input("fecha")
       ]);
 
@@ -146,68 +150,29 @@ class ControllerEvent extends Controller
       return $data;
     }
 
-    public static function spanish_month($month)
-    {
-
+    public static function spanish_month($month){
         $mes = $month;
-        if ($month=="Jan") {
-          $mes = "Enero";
-        }
-        elseif ($month=="Feb")  {
-          $mes = "Febrero";
-        }
-        elseif ($month=="Mar")  {
-          $mes = "Marzo";
-        }
-        elseif ($month=="Apr") {
-          $mes = "Abril";
-        }
-        elseif ($month=="May") {
-          $mes = "Mayo";
-        }
-        elseif ($month=="Jun") {
-          $mes = "Junio";
-        }
-        elseif ($month=="Jul") {
-          $mes = "Julio";
-        }
-        elseif ($month=="Aug") {
-          $mes = "Agosto";
-        }
-        elseif ($month=="Sep") {
-          $mes = "Septiembre";
-        }
-        elseif ($month=="Oct") {
-          $mes = "Octubre";
-        }
-        elseif ($month=="Oct") {
-          $mes = "December";
-        }
-        elseif ($month=="Dec") {
-          $mes = "Diciembre";
-        }
-        else {
-          $mes = $month;
-        }
+        if ($month=="Jan") {$mes = "Enero";}
+        elseif ($month=="Feb") {$mes = "Febrero";}
+        elseif ($month=="Mar") {$mes = "Marzo";}
+        elseif ($month=="Apr") {$mes = "Abril";}
+        elseif ($month=="May") {$mes = "Mayo";}
+        elseif ($month=="Jun") {$mes = "Junio";}
+        elseif ($month=="Jul") {$mes = "Julio";}
+        elseif ($month=="Aug") {$mes = "Agosto";}
+        elseif ($month=="Sep") {$mes = "Septiembre";}
+        elseif ($month=="Oct") {$mes = "Octubre";}
+        elseif ($month=="Oct") {$mes = "December";}
+        elseif ($month=="Dec") {$mes = "Diciembre";}
+        else {$mes = $month;}
         return $mes;
     }
 
-    // public function destroy($id){
-    //     $event = Event::find($id);
-    //     $event->delete();
-    //     // DB::table('evento')->delete($id);
 
-    //     return back()->with('success', 'Enviado exitosamente!');
-    // }
-
-    public function destroy(Event $evento)
-    {
-        // $evento = Event::find($id);
-        // $evento->delete();
-        $evento->delete();
-        return redirect('/');
-
-    }
-
+    public function destroy($id){
+        $event = Event::find($id);
+        $event->delete();
+        return redirect()->route('event.index');
+      }
 
 }

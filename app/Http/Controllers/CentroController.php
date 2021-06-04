@@ -41,7 +41,7 @@ class CentroController extends Controller{
 
     // Function that I use to show the page of the center that I have previously selected in centers.index, I pass the variable center and then all the comments
     public function show(Centro $centro){
-        $comentarios = Coment::all();
+        $comentarios = Coment::orderBy('id', 'DESC')->get();
         return view('centros.show', ['centro' => $centro], compact('comentarios'));
     }
 
@@ -57,9 +57,10 @@ class CentroController extends Controller{
     }
 
     // Function to delete the selected comment (it is not implemented yet since I want to implement a complaints system for the future)
-    public function destroy(Centro $centro, Coment $comment){
-        $comment->delete();
-        return redirect()->route('centros.show', $centro)->with('status', 'Se ha enviado la denuncia, se comprobará si el comentario es inapropiado. ¡MUCHAS GRACIAS!');
+    public function destroy($id){
+        $comentario = Coment::find($id);
+        $comentario->delete();
+        return redirect()->route('centros.index');
     }
 
 }

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
 
-/*!
+/*
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
@@ -5401,7 +5401,7 @@ a.badge:focus {
 a.badge-primary:hover,
 a.badge-primary:focus {
   color: #fff;
-  background-color: #2176bd;
+  background-color: #216298;
 }
 
 a.badge-primary:focus,
@@ -5412,13 +5412,13 @@ a.badge-primary.focus {
 
 .badge-secondary {
   color: #fff;
-  background-color: #6c757d;
+  background-color: #35bb49;
 }
 
 a.badge-secondary:hover,
 a.badge-secondary:focus {
   color: #fff;
-  background-color: #545b62;
+  background-color: #227a2f;
 }
 
 a.badge-secondary:focus,
@@ -5429,13 +5429,13 @@ a.badge-secondary.focus {
 
 .badge-success {
   color: #fff;
-  background-color: #38c172;
+  background-color: #f5a42a;
 }
 
 a.badge-success:hover,
 a.badge-success:focus {
   color: #fff;
-  background-color: #2d995b;
+  background-color: #ae731b;
 }
 
 a.badge-success:focus,
