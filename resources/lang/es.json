@@ -111,6 +111,17 @@
     "subtituloSenia":"Proyecto hecho en el instituto Ies la Senia de Paiporta",
     "text1": "¡Si necesitas cualquier tipo de ayuda, no dudes en contactarme a través de la página de contacto!, tampoco olvides que puedes ver los centros sin necesidad de registrarte! No esperes más y mira las opiniones de los estudiantes!",
 
+    "lunes": "Lunes",
+    "martes": "Martes",
+    "miercoles": "Miércoles",
+    "jueves": "Jueves",
+    "viernes": "Viernes",
+    "sabado": "Sabado",
+    "domingo": "Domingo",
+
+    "date": "Fecha",
+    "evento": "Evento",
+
     "30 Days": "30 Dias",
     "60 Days": "60 Dias",
     "90 Days": "90 Dias",

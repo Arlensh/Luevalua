@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Facades\DB;
 
 class ControllerEvent extends Controller
 {
@@ -190,5 +191,23 @@ class ControllerEvent extends Controller
         }
         return $mes;
     }
+
+    // public function destroy($id){
+    //     $event = Event::find($id);
+    //     $event->delete();
+    //     // DB::table('evento')->delete($id);
+
+    //     return back()->with('success', 'Enviado exitosamente!');
+    // }
+
+    public function destroy(Event $evento)
+    {
+        // $evento = Event::find($id);
+        // $evento->delete();
+        $evento->delete();
+        return redirect('/');
+
+    }
+
 
 }

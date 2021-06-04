@@ -49,3 +49,4 @@ Route::get('evento/details/{id}','App\Http\Controllers\ControllerEvent@details')
 Route::get('evento/index','App\Http\Controllers\ControllerEvent@index');
 Route::get('evento/index/{month}','App\Http\Controllers\ControllerEvent@index_month');
 Route::post('evento/calendario','App\Http\Controllers\ControllerEvent@calendario');
+Route::delete('evento/details/{id}', 'App\Http\Controllers\ControllerEvent@destroy');

@@ -1,34 +1,36 @@
 @extends('layout')
 
-@section('title', 'Sobre mi')
+@section('title', 'Evento')
 
 @section('content')
 
 <div class="container">
-    <p class="lead">
-    <h3>Evento</h3>
-    <p>Detalles de evento</p>
-    <a class="btn btn-default"  href="{{ asset('/evento/index') }}">Atras</a>
-    <hr>
 
-
-
-    <div class="col-md-6">
+    <div class="col-md-12">
       <form action="{{ asset('/evento/create/') }}" method="post">
-        <div class="fomr-group">
-          <h4>Titulo</h4>
-          {{ $event->titulo }}
+        <div class="fomr-group mt-3">
+            <h1><a class="btn" href="{{ asset('/evento/index') }}"><i class="fas fa-arrow-left"></i></a> @lang('evento'): {{ $event->titulo }}</h1>
+
+            <form method="post" action="{{ route('evento.destroy'), 1 }}">
+                <!-- here the '1' is the id of the post which you want to delete -->
+
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+
+                <button type="submit">Delete</button>
+            </form>
+
+
         </div>
-        <div class="fomr-group">
-          <h4>Descripcion del Evento</h4>
+        <div class="fomr-group mt-5">
           {!! $event->descripcion !!}
         </div>
         <div class="fomr-group">
-          <h4>Fecha</h4>
+          <h4>@lang('date')</h4>
           {{ $event->fecha }}
         </div>
         <br>
-        <input type="submit" class="btn btn-info" value="Guardar">
+        {{-- <input type="submit" class="btn btn-info" value="Guardar"> --}}
       </form>
     </div>
 

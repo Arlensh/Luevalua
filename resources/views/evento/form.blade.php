@@ -1,14 +1,10 @@
 @extends('layout')
 
-@section('title', 'Sobre mi')
+@section('title', 'Formulario del evento')
 
 @section('content')
 
 <div class="container">
-        <h3>Evento</h3>
-    <p>Formulario de evento</p>
-    <a class="btn btn-default"  href="{{ asset('/evento/index') }}">Atras</a>
-    <hr>
 
     @if (count($errors) > 0)
       <div class="alert alert-danger">
@@ -28,11 +24,13 @@
      @endif
 
 
-    <div class="col-md-6">
+    <div class="col-md-12">
+        <a class="btn py-1 px-2 mt-2" href="{{ asset('/evento/index') }}"><i class="fas fa-arrow-left"></i></a>
+
       <form action="{{ asset('/evento/create/') }}" method="post">
         @csrf
         <div class="form-group">
-          <label>Titulo</label>
+          <label>@lang('titulo')</label>
           <input type="text" class="form-control" name="titulo">
         </div>
         <div class="form-group">
@@ -59,11 +57,11 @@
             </script>
 
         <div class="form-group">
-          <label>Fecha</label>
+          <label>@lang('Choose date')</label>
           <input type="date" class="form-control" name="fecha">
         </div>
         <br>
-        <input type="submit" class="btn btn-info" value="Guardar">
+        <input type="submit" class="btn btn-info" value="@lang('Save')">
       </form>
     </div>
 
@@ -72,4 +70,5 @@
 
 
   </div> <!-- /container -->
+
   @endsection

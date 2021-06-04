@@ -111,6 +111,17 @@
     "subtituloSenia": "Project made at the Ies la Senia de Paiporta institute",
     "text1": "If you need any help, do not hesitate to contact me through the contact page! Do not forget that you can see the centers without registering! Wait no more and see the opinions of the students!",
 
+    "lunes": "Monday",
+    "martes": "Tuesday",
+    "miercoles": "Wednesday",
+    "jueves": "Thursday",
+    "viernes": "Friday",
+    "sabado": "Saturday",
+    "domingo": "Sunday",
+
+    "date": "Date",
+    "evento": "Event",
+
     "30 Days": "30 Days",
     "60 Days": "60 Days",
     "90 Days": "90 Days",
@@ -556,8 +567,8 @@
     "San Marino": "San Marino",
     "Sao Tome And Principe": "São Tomé and Príncipe",
     "Saudi Arabia": "Saudi Arabia",
-    "Save": "Зберегти",
-    "Saved.": "Збережено.",
+    "Save": "Save",
+    "Saved.": "Saved.",
     "Search": "Search",
     "Select A New Photo": "Виберіть нове фото",
     "Select Action": "Select Action",

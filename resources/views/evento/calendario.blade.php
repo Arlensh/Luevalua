@@ -1,22 +1,20 @@
 @extends('layout')
 
-@section('title', 'Sobre mi')
+@section('title', 'Calendario')
 
 @section('content')
 
     <div class="container">
 
-        <a class="btn btn-default"  href="{{ asset('/evento/form') }}">Crear un evento</a>
 
-        <hr>
 
-        <div class="row header-calendar"  >
+        <div class="row header-calendar mt-3"  >
 
           <div class="col" style="display: flex; justify-content: space-between; padding: 10px;">
             <a  href="{{ asset('/evento/event/') }}/<?= $data['last']; ?>" style="margin:10px;">
               <i class="fas fa-chevron-circle-left" style="font-size:30px;color:white;"></i>
             </a>
-            <h2 style="font-weight:bold;margin:10px;"><?= $mespanish; ?> <small><?= $data['year']; ?></small></h2>
+            <h2 style="font-weight:bold;margin:10px;"><?= $mespanish; ?> <small><?= $data['year']; ?> @auth @if (auth()->user()->role===3 || auth()->user()->role===1)<a class="btn" href="{{ asset('/evento/form') }}"><i class="far fa-calendar-plus"></i></a>@endif @endauth </small></h2>
             <a  href="{{ asset('/evento/event/') }}/<?= $data['next']; ?>" style="margin:10px;">
               <i class="fas fa-chevron-circle-right" style="font-size:30px;color:white;"></i>
             </a>
@@ -24,13 +22,13 @@
 
         </div>
         <div class="row">
-          <div class="col header-col">Lunes</div>
-          <div class="col header-col">Martes</div>
-          <div class="col header-col">Miercoles</div>
-          <div class="col header-col">Jueves</div>
-          <div class="col header-col">Viernes</div>
-          <div class="col header-col">Sabado</div>
-          <div class="col header-col">Domingo</div>
+          <div class="col header-col">@lang('lunes')</div>
+          <div class="col header-col">@lang('martes')</div>
+          <div class="col header-col">@lang('miercoles')</div>
+          <div class="col header-col">@lang('jueves')</div>
+          <div class="col header-col">@lang('viernes')</div>
+          <div class="col header-col">@lang('sabado')</div>
+          <div class="col header-col">@lang('domingo')</div>
         </div>
         <!-- inicio de semana -->
         @foreach ($data['calendar'] as $weekdata)
