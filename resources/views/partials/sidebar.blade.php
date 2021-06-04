@@ -52,6 +52,13 @@
                             @lang('contacto')
                         </a>
                     </li>
+
+                    <li class="{{ setActive('calendario') }} nav-item nav-link">
+                        <a href="{{ asset('/evento/index/') }}">
+                            <i class="fas fa-calendar-alt"></i>
+                           Calendario de eventos
+                        </a>
+                    </li>
                 </ul>
                 <ul class="nav flex-column mb-2">
                     <li>
