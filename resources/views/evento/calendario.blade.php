@@ -6,7 +6,11 @@
 
     <div class="container">
 
-
+        <div class="d-flex justify-content-lg-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 my-3">
+            <span class="mx-1"><i class="fas fa-circle text-primary"></i> @lang('evento')</span>
+            <span class="mx-1"><i class="fas fa-circle text-success"></i> @lang('noticia')</span>
+            <span class="mx-1"><i class="fas fa-circle text-secondary"> @lang('otro')</i></span>
+        </div>
 
         <div class="row header-calendar mt-3"  >
 
@@ -21,7 +25,7 @@
           </div>
 
         </div>
-        <div class="row">
+        <div class="row d-none d-lg-flex">
           <div class="col header-col">@lang('lunes')</div>
           <div class="col header-col">@lang('martes')</div>
           <div class="col header-col">@lang('miercoles')</div>
@@ -32,26 +36,26 @@
         </div>
         <!-- inicio de semana -->
         @foreach ($data['calendar'] as $weekdata)
-          <div class="row">
+          <div class="row" id="celdaCalendario">
             <!-- ciclo de dia por semana -->
             @foreach  ($weekdata['datos'] as $dayweek)
 
             @if  ($dayweek['mes']==$mes)
-              <div class="col box-day">
+              <div class="col-12 col-lg box-day">
                 {{ $dayweek['dia']  }}
                 <!-- evento -->
                 @foreach  ($dayweek['evento'] as $event)
-                    <a @if ($event->tipo==1) class="badge badge-primary"
-                    @elseif ($event->tipo==2) class="badge badge-secondary"
-                    @else class="badge badge-success"
+                    <a data-toggle="tooltip" data-placement="top" @if ($event->tipo==1) class="badge badge-primary" title="@lang('evento')"
+                    @elseif ($event->tipo==2) class="badge badge-secondary" title="@lang('noticia')"
+                    @else class="badge badge-success" title="@lang('otro')"
                     @endif
                     href="{{ asset('/evento/details/') }}/{{ $event->id }}">
-                    {{ $event->titulo }}
+                    {{ Str::limit($event->titulo, 10) }}
                     </a>
                 @endforeach
               </div>
             @else
-            <div class="col box-dayoff">
+            <div class="col box-dayoff d-none d-lg-block">
             </div>
             @endif
             @endforeach

@@ -56,8 +56,8 @@
                 <a class="btn btn-lg btn-block btn-primary" href="{{ route('contact') }}">@lang('contacto')</a>
                 <a class="btn btn-lg btn-block btn-outline-primary" href="{{ route('centros.index') }}">@lang('centros')</a>
             </div>
-            <div class="col-12 col-md-6 col-lg-6">
-                <img class="img-fluid my-4" src="/img/web_developer.svg" alt="Desarrollo Web">
+            <div class="col-12 col-md-6 col-lg-6 d-flex align-items-center justify-content-center">
+                <img class="img-fluid my-4 w-75" src="/img/web_developer.svg" alt="Desarrollo Web">
             </div>
         </div>
         <div id="fifth" class="container-fluid px-3 py-5 p-sm-5">
