@@ -5,12 +5,23 @@
     "contacto": "Contacto",
 
     "hola": "Hola",
-    "marquee": "jueves, 10 junio 2021, 23:59",
+    "marquee": "Inauguración de Luevalua, ¡diviertete y explora!",
 
     "nombre": "Nombre",
     "asunto": "Asunto",
     "contenido": "Contenido",
     "enviar": "Enviar",
+
+    "home1": "Proyecto realizado por",
+    "home2": "Si quieres saber mas de mí ve al siguiente enlace!",
+    "home3": "Estudiante de",
+    "home4": "Estudiante de DAW (Desarrollo de Aplicaciones Web)",
+    "home5": "¿Ya estás registrado?",
+    "home6": "¡De ser así, opina sobre tu centro!",
+    "home7": "Podrás ayudar a futuros estudiantes a prepararse para lo peor o ¡para lo mejor!",
+    "home8": "¿Eres profesor/a?",
+    "home9": "Adquiere nuestros servicios!",
+    "home10": "Gracias a nuestra tarifa mas reciente, podrás adquirir una promocion de creacion de eventos noticias y otros!, además de poder modificar la página principal de tu centro.",
 
     "sobremiTitulo": "Luciano &amp; Desarrollo de Aplicaciones Web",
     "sobremi1": "Si bien es verdad que soy un profesional joven y con menos experiencia que otros candidatos, mi capacidad de aprendizaje y decisión me convierten en el candidato ideal para aquellas empresas que deseen crear un equipo joven, innovador y exigente.",
@@ -122,8 +133,9 @@
     "date": "Fecha",
     "evento": "Evento",
     "noticia": "Noticia",
-    "otro": "Otros",
+    "otros": "Otros",
     "calendario": "Calendario",
+    "tipo": "Tipo",
 
     "30 Days": "30 Dias",
     "60 Days": "60 Dias",

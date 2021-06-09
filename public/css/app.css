@@ -5407,41 +5407,41 @@ a.badge-primary:focus {
 a.badge-primary:focus,
 a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #3490dc84;
+  box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.5);
 }
 
 .badge-secondary {
   color: #fff;
-  background-color: #38c172;
+  background-color: #6c757d;
 }
 
 a.badge-secondary:hover,
 a.badge-secondary:focus {
   color: #fff;
-  background-color: #27844d;
+  background-color: #545b62;
 }
 
 a.badge-secondary:focus,
 a.badge-secondary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #38c17182;
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
 }
 
 .badge-success {
   color: #fff;
-  background-color: #919191;
+  background-color: #38c172;
 }
 
 a.badge-success:hover,
 a.badge-success:focus {
   color: #fff;
-  background-color: #656565;
+  background-color: #2d995b;
 }
 
 a.badge-success:focus,
 a.badge-success.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #65656582;
+  box-shadow: 0 0 0 0.2rem rgba(56, 193, 114, 0.5);
 }
 
 .badge-info {

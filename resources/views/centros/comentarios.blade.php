@@ -1,17 +1,19 @@
 <ul>
+    <a class="" data-toggle="collapse" href="#respuesta" role="button" aria-expanded="false" aria-controls="respuesta">
+    @lang('respondercomentarios')
+  </a>
     @forelse($comentarios as $comentario)
         @if ($comentario->id_centro===$centro->centro)
-        <a class="" data-toggle="collapse" href="#respuesta" role="button" aria-expanded="false" aria-controls="respuesta">
-            @lang('respondercomentarios')
-          </a>
+
             <li class="list-group-item border-0 mb-3-shadow-sm d-flex justify-content-between align-items-center mb-1 mr-md-5">
                     <span class="text-secondary mr-5">
                         <span class="font-weight-bold">{{ $comentario->title }}</span>
                         <br>
+                        <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
+                        <br>
                         @lang('autor') {{ $comentario->id_user}} <br>
                         {{ $comentario->description }}
                     </span>
-                    <span class="text-black-50">{{ $comentario->created_at->diffForHumans() }}</span>
                     @auth
                         <form action={{ route('centros.destroy', $comentario->id, $centro) }} method="POST" class="mt-3">
                             @csrf @method('DELETE')

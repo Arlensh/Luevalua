@@ -5,12 +5,23 @@
     "contacto": "Contact",
 
     "hola": "Hello",
-    "marquee": "thursday, 10 jun 2021, 23:59",
+    "marquee": "Luevalua inauguration, have fun and explore!",
 
     "nombre": "Name",
     "asunto": "Subject",
     "contenido": "Content",
     "enviar": "Send",
+
+    "home1": "Project carried out by",
+    "home2": "If you want to know more about me go to the following link!",
+    "home3": "Student of",
+    "home4": "Student of DAW (Web applications development)",
+    "home5": "Are you already registered?",
+    "home6": "If so, give your opinion about your center!",
+    "home7": "You can help future students prepare for the worst or the best!",
+    "home8": "You are a teacher?",
+    "home9": "Acquire our services!",
+    "home10": "Thanks to our most recent rate, you will be able to acquire a promotion for the creation of news and other events! In addition to being able to modify the main page of your center.",
 
     "sobremiTitulo": "Luciano &amp; Web Application Developer",
     "sobremi1": "Although it is true that I am a young professional with less experience than other candidates, my learning and decisiveness make me the ideal candidate for those companies that wish to create a young, innovative and demanding team.",
@@ -124,6 +135,7 @@
     "noticia": "New",
     "otros": "Other",
     "calendario": "Calendary",
+    "tipo": "Type",
 
     "30 Days": "30 Days",
     "60 Days": "60 Days",

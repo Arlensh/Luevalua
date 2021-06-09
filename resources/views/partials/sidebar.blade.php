@@ -39,17 +39,17 @@
                         </a>
                     </li>
 
+                    <li class="{{ setActive('calendario.*') }} nav-item nav-link">
+                        <a href="{{ route('event.index') }}">
+                            <i class="fas fa-calendar-alt"></i>
+                           @lang('calendario')
+                        </a>
+                    </li>
+
                     <li class="{{ setActive('about') }} nav-item nav-link">
                         <a href="{{ route('about') }}">
                             <i class="fas fa-user text-info"></i>
                             @lang('sobre mi')
-                        </a>
-                    </li>
-
-                    <li class="{{ setActive('events.*') }} nav-item nav-link">
-                        <a href="{{ route('event.index') }}">
-                            <i class="fas fa-calendar-alt"></i>
-                           @lang('calendario')
                         </a>
                     </li>
 
@@ -107,7 +107,7 @@
                             </a>
                             <!-- Github -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
-                                style="background-color: #333333" href="https://github.com/Arlensh/Luevalua-laravel"
+                                style="background-color: #333333" href="https://github.com/Arlensh/luevalua"
                                 role="button" target="_blank">
                                 <i class="fab fa-github">
                                 </i>

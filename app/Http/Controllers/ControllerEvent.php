@@ -8,56 +8,47 @@ use Illuminate\Support\Facades\DB;
 
 class ControllerEvent extends Controller
 {
-    //
+
     public function form(Event $evento){
       return view("evento/form", ['evento' => $evento]);
     }
 
     public function create(Request $request){
-
       $this->validate($request, [
-      'titulo'     =>  'required',
-      'descripcion'  =>  'required',
-      'centro'  =>  'required',
-      'tipo'  =>  'required',
-      'fecha' =>  'required'
+      'titulo'      =>  'required',
+      'descripcion' =>  'required',
+      'centro'      =>  'required',
+      'tipo'        =>  'required|min:1',
+      'fecha'       =>  'required',
      ]);
-
       Event::insert([
         'titulo'       => $request->input("titulo"),
         'descripcion'  => $request->input("descripcion"),
-        'centro'  => $request->input("centro"),
-        'tipo'  => $request->input("tipo"),
-        'fecha'        => $request->input("fecha")
+        'centro'       => $request->input("centro"),
+        'tipo'         => $request->input("tipo"),
+        'fecha'        => $request->input("fecha"),
       ]);
-
-      return back()->with('success', 'Enviado exitosamente!');
-
+      return back()->with('success', 'Enviado con éxito!');
     }
 
     public function details($id){
-
       $event = Event::find($id);
-
       return view("evento/evento",[
         "event" => $event
       ]);
-
     }
 
 
-    // =================== CALENDARIO =====================
+    // =================== CALENDARY =====================
 
     public function index(){
 
        $month = date("Y-m");
-       //
        $data = $this->calendar_month($month);
        $mes = $data['month'];
        // obtener mes en espanol
        $mespanish = $this->spanish_month($mes);
        $mes = $data['month'];
-
        return view("evento/calendario",[
          'data' => $data,
          'mes' => $mes,
@@ -85,32 +76,32 @@ class ControllerEvent extends Controller
     public static function calendar_month($month){
       //$mes = date("Y-m");
       $mes = $month;
-      //sacar el ultimo de dia del mes
+      //take out the last day of the month
       $daylast =  date("Y-m-d", strtotime("last day of ".$mes));
-      //sacar el dia de dia del mes
+      //take out the day of the month
       $fecha      =  date("Y-m-d", strtotime("first day of ".$mes));
       $daysmonth  =  date("d", strtotime($fecha));
       $montmonth  =  date("m", strtotime($fecha));
       $yearmonth  =  date("Y", strtotime($fecha));
-      // sacar el lunes de la primera semana
+      // remove Monday from the first week
       $nuevaFecha = mktime(0,0,0,$montmonth,$daysmonth,$yearmonth);
       $diaDeLaSemana = date("w", $nuevaFecha);
-      $nuevaFecha = $nuevaFecha - ($diaDeLaSemana*24*3600); //Restar los segundos totales de los dias transcurridos de la semana
+      $nuevaFecha = $nuevaFecha - ($diaDeLaSemana*24*3600); // Subtract the total seconds from the elapsed days of the week
       $dateini = date ("Y-m-d",$nuevaFecha);
       //$dateini = date("Y-m-d",strtotime($dateini."+ 1 day"));
-      // numero de primer semana del mes
+      // number of the first week of the month
       $semana1 = date("W",strtotime($fecha));
-      // numero de ultima semana del mes
+      // number of last week of the month
       $semana2 = date("W",strtotime($daylast));
-      // semana todal del mes
-      // en caso si es diciembre
+      // whole week of the month
+      // in case if it is December
       if (date("m", strtotime($mes))==12) {
-          $semana = 5;
+      $semana = 5;
       }
       else {
         $semana = ($semana2-$semana1)+1;
       }
-      // semana todal del mes
+      // whole week of the month
       $datafecha = $dateini;
       $calendario = array();
       $iweek = 0;
@@ -125,7 +116,7 @@ class ControllerEvent extends Controller
             $datanew['mes'] = date("M", strtotime($datafecha));
             $datanew['dia'] = date("d", strtotime($datafecha));
             $datanew['fecha'] = $datafecha;
-            //AGREGAR CONSULTAS EVENTO
+            // ADD EVENT QUERIES
             $datanew['evento'] = Event::where("fecha",$datafecha)->get();
 
             array_push($weekdata,$datanew);

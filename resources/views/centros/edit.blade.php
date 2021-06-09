@@ -13,7 +13,7 @@
     <form action="{{ route('centro.update', $centro) }}" method="POST">
         @csrf @method('PATCH')
         <div class="form-group">
-            <textarea name="content" rows="5" cols="40" class="form-control tinymce-editor" value={!! $centro->content !!}></textarea>
+            <textarea name="content" rows="5" cols="40" class="form-control tinymce-editor" value={!! $centro->content !!}</textarea>
             </div>
             <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
             <script type="text/javascript">

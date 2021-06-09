@@ -44,6 +44,10 @@
                         <input type="text" name="id_user" value="{{ Auth::user()->name }}">
                     </label>
                     <label class="d-none" for="">
+                        @lang('user')
+                        <input type="text" name="idUser" value="{{ Auth::user()->id }}">
+                    </label>
+                    <label class="d-none" for="">
                         @lang('centro')
                         <input type="text" name="id_centro" value="{{$centro->centro}}">
                     </label>

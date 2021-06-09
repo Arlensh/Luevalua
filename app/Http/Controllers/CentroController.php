@@ -34,6 +34,7 @@ class CentroController extends Controller{
             'description' => 'required|min:3|max:300',
             'id_centro' => 'required',
             'id_user' => 'required',
+            'idUser' => 'required',
         ]);
         Coment::create($fields);
         return redirect()->route('centros.show', compact('centro'));
