@@ -10,7 +10,7 @@
     </div>
     <section class="section about-section gray-bg" id="about">
         <div class="container">
-            <div class="row align-items-center flex-row-reverse">
+            <div class="row flex-row-reverse">
                 <div class="col-lg-7">
                     <div class="about-text go-to">
                         <h6 class="theme-color lead">@lang('sobremiTitulo')</h6>
@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="about-avatar">
+                    <div class="about-avatar mt-5">
                         <img class="w-75" src="/img/avatar_about_me.png" title="Luciano" alt="Yo">
                     </div>
                 </div>

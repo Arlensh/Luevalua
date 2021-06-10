@@ -107,7 +107,7 @@
                             </a>
                             <!-- Github -->
                             <a class="btn text-white btn-floating p-1 mb-1 mx-1 m-md-1 col-1 col-md-3"
-                                style="background-color: #333333" href="https://github.com/Arlensh/LuevaluaProyecto"
+                                style="background-color: #333333" href="https://github.com/Arlensh/Luevalua"
                                 role="button" target="_blank">
                                 <i class="fab fa-github">
                                 </i>
